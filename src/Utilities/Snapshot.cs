@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace ChilliCream.Testing
+namespace HotChocolate
 {
     public static class Snapshot
     {
@@ -46,7 +46,8 @@ namespace ChilliCream.Testing
             string snapshot = null;
 
             // save new snapshot
-            string directoryPath = Path.Combine("__snapshots__", "new");
+            string directoryPath = Path.Combine("__snapshots__new");
+
             if (!Directory.Exists(directoryPath))
             {
                 try
@@ -79,6 +80,26 @@ namespace ChilliCream.Testing
 
             // return new snapshot
             return snapshot;
+        }
+
+        public static void Clean(object obj,
+            [CallerMemberNameAttribute]string snapshotName = null)
+        {
+            string directoryPath = Path.Combine("__snapshots__new");
+
+            if (Directory.Exists(directoryPath))
+            {
+                if (obj is string s)
+                {
+                    File.Delete(
+                        Path.Combine(directoryPath, snapshotName + ".txt"));
+                }
+                else
+                {
+                    File.Delete(
+                        Path.Combine(directoryPath, snapshotName + ".json"));
+                }
+            }
         }
 
         private static string NormalizeLineBreaks(string snapshot)
