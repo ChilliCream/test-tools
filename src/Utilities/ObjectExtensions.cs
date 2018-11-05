@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Xunit;
 
-namespace HotChocolate
+namespace ChilliCream.Testing
 {
     public static class ObjectExtensions
     {

@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace HotChocolate
+namespace ChilliCream.Testing
 {
     public static class Snapshot
     {
