@@ -9,9 +9,9 @@ namespace ChilliCream.Testing
             this object obj,
             [CallerMemberName]string snapshotName = null)
         {
-            Assert.Equal(HotChocolate.Snapshot.Current(snapshotName),
-                HotChocolate.Snapshot.New(obj, snapshotName));
-            HotChocolate.Snapshot.Clean(obj, snapshotName);
+            Assert.Equal(Testing.Snapshot.Current(snapshotName),
+                Testing.Snapshot.New(obj, snapshotName));
+            Testing.Snapshot.Clean(obj, snapshotName);
         }
     }
 }
