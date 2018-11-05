@@ -128,58 +128,13 @@ Task("Tests")
     // DotNetCoreTest("./src/Language.Tests", testSettings);
 });
 
-Task("SonarBegin")
-    .IsDependentOn("EnvironmentSetup")
-    .Does(() =>
-{
-    SonarBegin(new SonarBeginSettings{
-        Url = "https://sonarcloud.io",
-        Login = sonarLogin,
-        Key = "TestTools",
-        Organization = "chillicream",
-        VsTestReportsPath = "**/*.trx",
-        OpenCoverReportsPath = "**/*.opencover.xml",
-        Verbose = true,
-        Version = packageVersion,
-        ArgumentCustomization = args => {
-            var a = args;
-
-            if(!string.IsNullOrEmpty(sonarBranch))
-            {
-                a = a.Append($"/d:sonar.pullrequest.key=\"{sonarBranch}\"");
-            }
-
-            if(!string.IsNullOrEmpty(sonarBranchTitle))
-            {
-                a = a.Append($"/d:sonar.pullrequest.branch=\"{sonarBranchTitle}\"");
-            }
-
-            return a;
-        }
-    });
-});
-
-Task("SonarEnd")
-    .Does(() =>
-{
-    SonarEnd(new SonarEndSettings{
-        Login = sonarLogin,
-     });
-});
-
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 Task("Default")
     .IsDependentOn("Tests");
 
-Task("Sonar")
-    .IsDependentOn("SonarBegin")
-    .IsDependentOn("Tests")
-    .IsDependentOn("SonarEnd");
-
 Task("Release")
-    .IsDependentOn("Sonar")
     .IsDependentOn("Publish");
 
 //////////////////////////////////////////////////////////////////////

@@ -1,0 +1,17 @@
+<Project>
+
+  <PropertyGroup>
+    <Product>Test Utilities</Product>
+    <Authors>ChilliCream authors and contributors</Authors>
+    <Company>ChilliCream</Company>
+    <Copyright>Copyright © 2018 ChilliCream (Michael &amp; Rafael Staib)</Copyright>
+    <PackageLicenseUrl>https://github.com/ChilliCream/test-tools/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/ChilliCream/test-tools</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ChilliCream/test-tools</RepositoryUrl>
+    <PackageTags>GraphQL ChilliCream</PackageTags>
+    <PackageReleaseNotes>Release notes: https://github.com/ChilliCream/test-tools/releases/$(PackageVersion)</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryType>GitHub</RepositoryType>
+  </PropertyGroup>
+
+</Project>
